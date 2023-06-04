@@ -1,7 +1,7 @@
 import React from 'react'
 import useInputState from '@/hooks/useInputState'
 
-const LoginForm = () => {
+const SignUpForm = () => {
     const [email, resetEmail, handleEmail] = useInputState("");
 
     const handleSubmit = (e) => {
@@ -30,4 +30,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+export default SignUpForm
