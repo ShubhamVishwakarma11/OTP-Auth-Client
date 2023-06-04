@@ -1,15 +1,18 @@
 import React from 'react'
 import useInputState from '@/hooks/useInputState'
+import { useRouter } from 'next/router';
 
 const LoginForm = () => {
+    const router = useRouter();
     const [email, resetEmail, handleEmail] = useInputState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(email);
         resetEmail();
+        router.push('/verify-otp');
     }
-    
+
   return (
     <form className='w-full mt-8 flex flex-col gap-8' onSubmit={handleSubmit}>
         <div className="flex flex-col items-start">

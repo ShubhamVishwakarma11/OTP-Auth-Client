@@ -9,7 +9,7 @@ const Navbar = () => {
             <div className="">
                 <h1 style={open_sans.style} className='text-2xl font-bold'>OTP Auth</h1>
             </div>
-            <div className="flex justify-between gap-10 items-center">
+            <div className="flex justify-between gap-10 items-center text-lg">
                 <Link href="/login">Login</Link>
                 <Link href="/signup">SignUp</Link>
             </div>

@@ -1,13 +1,16 @@
 import React from 'react'
 import useInputState from '@/hooks/useInputState'
+import { useRouter } from 'next/router';
 
 const SignUpForm = () => {
+    const router = useRouter();
     const [email, resetEmail, handleEmail] = useInputState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(email);
         resetEmail();
+        router.push('/verify-otp');
     }
     
   return (
