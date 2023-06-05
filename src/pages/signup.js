@@ -3,7 +3,7 @@ import SignUpForm from '@/components/SignUpForm'
 import { useAuthContext } from '@/hooks/useAuthContext'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useEffect } from 'react'
 import {MdEmail} from 'react-icons/md'
 
 const Signup = () => {

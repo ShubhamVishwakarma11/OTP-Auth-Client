@@ -3,7 +3,7 @@ import VerifyForm from '@/components/VerifyForm'
 import { useAuthContext } from '@/hooks/useAuthContext'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useEffect } from 'react'
 import {RiLockPasswordFill} from 'react-icons/ri'
 
 const VerifyOTP = () => {
