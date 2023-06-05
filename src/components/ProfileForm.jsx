@@ -1,6 +1,5 @@
 import React from 'react'
 import useInputState from '@/hooks/useInputState'
-import { useRouter } from 'next/router';
 import useCreateProfile from '@/hooks/useCreateProfile';
 
 const ProfileForm = () => {
@@ -19,6 +18,11 @@ const ProfileForm = () => {
 
   return (
     <form className='w-full mt-8 flex flex-col gap-8' onSubmit={handleSubmit}>
+        {error && 
+            <div className="p-3 border-2 border-red-500 bg-red-200 w-full">
+                <p className='text-red-500'> {error} </p>
+            </div>
+        }
         <div className="flex flex-col items-start">
             <label htmlFor='name' className='text-slate-700 text-lg font-semibold'>Name</label>
             <input

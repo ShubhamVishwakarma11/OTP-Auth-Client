@@ -29,6 +29,11 @@ const VerifyForm = () => {
     
   return (
     <form className='w-full mt-8 flex flex-col gap-8 items-center' onSubmit={handleSubmit}>
+        {error && 
+            <div className="p-3 border-2 border-red-500 bg-red-200 w-full">
+                <p className='text-red-500'> {error} </p>
+            </div>
+        }
         <div className="flex items-center justify-center gap-2">
             <label htmlFor='OTP' className='text-slate-700 text-xl font-semibold'>OTP</label>
             <input
