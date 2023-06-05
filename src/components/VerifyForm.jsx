@@ -5,7 +5,7 @@ import { useEmailContext } from '@/hooks/useEmailContext';
 import useLogin from '@/hooks/useLogin';
 
 const VerifyForm = () => {
-    const { email  } = useEmailContext()
+    const { email } = useEmailContext()
     const {verifyOTP, error, isLoading} = useVerifyOTP();
     const {login} = useLogin();
     const [counter, setCounter] = React.useState(180);
@@ -13,7 +13,7 @@ const VerifyForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(OTP);
+        console.log(OTP, email);
         await verifyOTP(email, OTP);
         resetOTP();
     }

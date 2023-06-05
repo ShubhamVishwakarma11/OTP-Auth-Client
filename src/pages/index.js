@@ -2,11 +2,20 @@ import { useAuthContext } from '@/hooks/useAuthContext';
 import { Open_Sans } from 'next/font/google';
 import {MdOutlineVerifiedUser} from 'react-icons/md'
 import ProfileDetails from '@/components/ProfileDetails';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 export const open_sans = Open_Sans({ subsets: ['latin'] });
 
 export default function Home() {
   const {user} = useAuthContext();
+  const router = useRouter();
+
+  useEffect( ()=> {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [])
 
   return (
     <div className='w-full flex justify-center items-center'>

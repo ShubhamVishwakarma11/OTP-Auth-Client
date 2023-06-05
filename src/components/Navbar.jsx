@@ -15,7 +15,7 @@ const Navbar = () => {
     <div className='w-full flex justify-center items-center bg-blue-600 text-white'>
         <div className="w-80% flex justify-between items-center h-[4rem]">
             <div className="">
-                <h1 style={open_sans.style} className='text-2xl font-bold'>OTP Auth</h1>
+                <h1 style={open_sans.style} className='text-2xl font-bold'><Link href="/">OTP Auth</Link></h1>
             </div>
                 {user ? 
                   <div className="flex justify-between gap-10 items-center text-lg">

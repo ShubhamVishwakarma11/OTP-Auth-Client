@@ -1,9 +1,17 @@
 import ProfileForm from '@/components/ProfileForm'
-import Link from 'next/link'
+import { useAuthContext } from '@/hooks/useAuthContext'
+import { useRouter } from 'next/router'
 import React from 'react'
 import {MdVerifiedUser} from 'react-icons/md'
 
 const createProfile = () => {
+  const {auth} = useAuthContext();
+  const router = useRouter();
+  useEffect( () => {
+    if (auth) {
+      router.push("/");
+    }
+  }, [])
   return (
     <div className='w-full flex justify-center items-center'>
         <div className="w-35% bg-blue-100 flex flex-col justify-between items-center m-12 p-12 rounded-xl">

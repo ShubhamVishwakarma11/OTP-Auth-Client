@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useAuthContext} from './useAuthContext'
 import { useRouter } from "next/router";
+import { useEmailContext } from "./useEmailContext";
 
 const useVerifyOTP = () => {
-    const [error, setError] = useState(null)
-    const [isLoading, setIsLoading] = useState(null)
-    const { dispatch } = useAuthContext()
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(null);
+    const { dispatch } = useAuthContext();
+
 
     const router = useRouter();
 
