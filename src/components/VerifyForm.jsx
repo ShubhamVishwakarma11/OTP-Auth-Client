@@ -1,14 +1,25 @@
 import React from 'react'
 import useInputState from '@/hooks/useInputState'
+import useVerifyOTP from '@/hooks/useVerifyOTP';
+import { useEmailContext } from '@/hooks/useEmailContext';
+import useLogin from '@/hooks/useLogin';
 
 const VerifyForm = () => {
-
+    const { email  } = useEmailContext()
+    const {verifyOTP, error, isLoading} = useVerifyOTP();
+    const {login} = useLogin();
     const [counter, setCounter] = React.useState(180);
     const [OTP, resetOTP, handleOTP] = useInputState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(OTP);
+        await verifyOTP(email, OTP);
+        resetOTP();
+    }
+
+    const resendOTP = async () => {
+        await login(email);
         resetOTP();
     }
 
@@ -33,8 +44,11 @@ const VerifyForm = () => {
                 <span className='text-black font-bold'> {counter} </span> Seconds
             </p>
             :
-            <p className='text-md text-slate-500'>Verification Code expired
-            </p>
+            <div className="flex justify-center items-center gap-2">
+                <p className='text-md text-slate-500'>Verification Code expired</p>
+                <button className='' onClick={resendOTP}>Resend OTP</button>
+            </div>
+            
         }
         <button type='submit' className='bg-green-500 w-full p-4 rounded-lg hover:bg-green-600 transition-none'>
             <p className='text-white text-lg font-semibold'>Verify OTP</p>

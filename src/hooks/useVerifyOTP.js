@@ -13,7 +13,7 @@ const useVerifyOTP = () => {
         setError(null)
         setIsLoading(true)
 
-        const response = await fetch(`${process.env.URL}/api/user/verify-otp`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/user/verify-otp`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -32,10 +32,10 @@ const useVerifyOTP = () => {
             localStorage.setItem('user', JSON.stringify(json))
 
             //update the auth context
-            dispatch({type: "verifyOTP", payload: json})
+            dispatch({type: "LOGIN", payload: json})
 
             setIsLoading(false)
-            router.push('/createProfile')
+            router.push('/create-profile')
         }
     }
 

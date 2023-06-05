@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { useEmailContext } from "./useEmailContext";
 
 const useLogin = () => {
+    const {dispatch} = useEmailContext();
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
 
@@ -27,6 +29,7 @@ const useLogin = () => {
 
         if (response.ok) {
             setIsLoading(false)
+            dispatch({type: "ADD", payload: email})
             router.push('/verify-otp')
         }
     }
