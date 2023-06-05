@@ -1,20 +1,25 @@
 import React from 'react'
 import useInputState from '@/hooks/useInputState'
-import { useRouter } from 'next/router';
+import useSignUp from '@/hooks/useSignUp'
 
 const SignUpForm = () => {
-    const router = useRouter();
+    const {signup, error, isLoading} = useSignUp();
     const [email, resetEmail, handleEmail] = useInputState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(email);
+        await signup(email);
         resetEmail();
-        router.push('/verify-otp');
     }
     
   return (
     <form className='w-full mt-8 flex flex-col gap-8' onSubmit={handleSubmit}>
+        {error && 
+            <div className="p-3 border-2 border-red-500 bg-red-200 w-full">
+                <p className='text-red-500'> {error} </p>
+            </div>
+        }
         <div className="flex flex-col items-start">
             <label htmlFor='email' className='text-slate-700 text-lg font-semibold'>Email</label>
             <input
