@@ -6,8 +6,9 @@ import '@/styles/globals.css'
 export default function App({ Component, pageProps }) {
   return (<>
     <AuthContextProvider>
-      <EmailContextProvider><Navbar/>
-        <Component {...pageProps} />
+      <EmailContextProvider>
+          <Navbar/>
+          <Component {...pageProps} />
       </EmailContextProvider>
     </AuthContextProvider>
   </>)
