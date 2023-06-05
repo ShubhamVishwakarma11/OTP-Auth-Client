@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import {MdVerifiedUser} from 'react-icons/md'
 
-const createProfile = () => {
+const CreateProfile = () => {
   const {auth} = useAuthContext();
   const router = useRouter();
   useEffect( () => {
@@ -28,4 +28,4 @@ const createProfile = () => {
   )
 }
 
-export default createProfile
+export default CreateProfile
