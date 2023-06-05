@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useAuthContext} from './useAuthContext'
 import { useRouter } from "next/router";
-import { useEmailContext } from "./useEmailContext";
 
 const useVerifyOTP = () => {
     const [error, setError] = useState(null);
@@ -37,7 +36,7 @@ const useVerifyOTP = () => {
             dispatch({type: "LOGIN", payload: json})
 
             setIsLoading(false)
-            router.push('/create-profile')
+            router.push('/')
         }
     }
 

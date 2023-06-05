@@ -1,7 +1,9 @@
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 
 const ProfileDetails = ({user}) => {
   const [data, setData] = useState();
+  const router = useRouter();
 
   useEffect( ()=> {
     const fetchProfile = async () => {
@@ -17,6 +19,7 @@ const ProfileDetails = ({user}) => {
       const json = await response.json()
 
       if (response.ok) { 
+        if (!json.name) router.push("/create-profile");
         setData(json);
         console.log(data);
       }

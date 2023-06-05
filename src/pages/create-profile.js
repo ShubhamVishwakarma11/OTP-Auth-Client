@@ -1,7 +1,7 @@
 import ProfileForm from '@/components/ProfileForm'
 import { useAuthContext } from '@/hooks/useAuthContext'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useEffect } from 'react'
 import {MdVerifiedUser} from 'react-icons/md'
 
 const createProfile = () => {
