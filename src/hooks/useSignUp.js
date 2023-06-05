@@ -27,7 +27,7 @@ const useSignUp = () => {
 
         if (response.ok) {
             setIsLoading(false)
-            router.push('/verif-otp')
+            router.push('/verify-otp')
         }
     }
 

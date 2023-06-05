@@ -11,7 +11,7 @@ const useLogin = () => {
         setError(null)
         setIsLoading(true)
 
-        const response = await fetch(`${process.env.URL}/api/user/login`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/user/login`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ const useLogin = () => {
 
         if (response.ok) {
             setIsLoading(false)
-            router.push('/verif-otp')
+            router.push('/verify-otp')
         }
     }
 

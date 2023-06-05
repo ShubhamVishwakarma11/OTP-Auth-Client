@@ -1,16 +1,18 @@
 import React from 'react'
 import useInputState from '@/hooks/useInputState'
+import useLogin from '@/hooks/useLogin';
 import { useRouter } from 'next/router';
 
 const LoginForm = () => {
     const router = useRouter();
+    const {login, error, isLoading} = useLogin();
     const [email, resetEmail, handleEmail] = useInputState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(email);
+        await login(email);
         resetEmail();
-        router.push('/verify-otp');
     }
 
   return (
