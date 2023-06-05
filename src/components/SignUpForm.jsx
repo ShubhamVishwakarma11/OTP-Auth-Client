@@ -1,6 +1,7 @@
-import React from 'react'
-import useInputState from '@/hooks/useInputState'
-import useSignUp from '@/hooks/useSignUp'
+import React from 'react';
+import useInputState from '@/hooks/useInputState';
+import useSignUp from '@/hooks/useSignUp';
+import {ImSpinner2} from 'react-icons/im';
 
 const SignUpForm = () => {
     const {signup, error, isLoading} = useSignUp();
@@ -30,8 +31,14 @@ const SignUpForm = () => {
                 placeholder="Enter your email"
             />
         </div>
-        <button type='submit' className='bg-green-500 p-4 rounded-lg hover:bg-green-600 transition-none'>
-            <p className='text-white text-lg font-semibold'>Get OTP</p>
+        <button type='submit' disabled={isLoading} className='bg-green-500 p-4 rounded-lg hover:bg-green-600 transition-none'>
+        {isLoading? 
+                <div className='flex items-center justify-center gap-2'>
+                    <ImSpinner2 className="text-white text-lg animate-spin"/>
+                    <p className='text-white text-lg font-semibold'>Sending OTP</p>
+                </div>
+            : <p className='text-white text-lg font-semibold'>Get OTP</p>
+            }
         </button>
         
     </form>

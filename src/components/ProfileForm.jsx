@@ -1,6 +1,7 @@
 import React from 'react'
 import useInputState from '@/hooks/useInputState'
 import useCreateProfile from '@/hooks/useCreateProfile';
+import {ImSpinner2} from 'react-icons/im';
 
 const ProfileForm = () => {
     const {createProfileFunc, error, isLoading} = useCreateProfile(); 
@@ -43,8 +44,14 @@ const ProfileForm = () => {
                 placeholder="Enter your mobile number"
             />
         </div>
-        <button type='submit' className='bg-green-500 p-4 rounded-lg hover:bg-green-600 transition-none'>
-            <p className='text-white text-lg font-semibold'>Create Profile</p>
+        <button type='submit' disabled={isLoading} className='bg-green-500 p-4 rounded-lg hover:bg-green-600 transition-none'>
+            {isLoading? 
+                <div className='flex items-center justify-center gap-2'>
+                    <ImSpinner2 className="text-white text-lg animate-spin"/>
+                    <p className='text-white text-lg font-semibold'>Creating Profile</p>
+                </div>
+            : <p className='text-white text-lg font-semibold'>Create Profile</p>
+            }   
         </button>
         
     </form>

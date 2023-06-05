@@ -1,8 +1,9 @@
-import React from 'react'
-import useInputState from '@/hooks/useInputState'
+import React from 'react';
+import useInputState from '@/hooks/useInputState';
 import useVerifyOTP from '@/hooks/useVerifyOTP';
 import { useEmailContext } from '@/hooks/useEmailContext';
 import useLogin from '@/hooks/useLogin';
+import {ImSpinner2} from 'react-icons/im';
 
 const VerifyForm = () => {
     const { email } = useEmailContext()
@@ -55,8 +56,14 @@ const VerifyForm = () => {
             </div>
             
         }
-        <button type='submit' className='bg-green-500 w-full p-4 rounded-lg hover:bg-green-600 transition-none'>
-            <p className='text-white text-lg font-semibold'>Verify OTP</p>
+        <button type='submit' disabled={isLoading} className='bg-green-500 w-full p-4 rounded-lg hover:bg-green-600 transition-none'>
+            {isLoading? 
+                <div className='flex items-center justify-center gap-2'>
+                    <ImSpinner2 className="text-white text-lg animate-spin"/>
+                    <p className='text-white text-lg font-semibold'>Verifying OTP</p>
+                </div>
+            : <p className='text-white text-lg font-semibold'>Verify OTP</p>
+            }
         </button>
         
     </form>
