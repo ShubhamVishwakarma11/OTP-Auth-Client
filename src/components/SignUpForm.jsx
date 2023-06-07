@@ -14,7 +14,7 @@ const SignUpForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(email, recaptchaValue);
-        await signup(email);
+        await signup(email, recaptchaValue);
         resetEmail();
         captchaRef.current.reset();
     }

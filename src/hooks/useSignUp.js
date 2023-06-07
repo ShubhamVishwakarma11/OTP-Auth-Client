@@ -9,7 +9,7 @@ const useSignUp = () => {
 
     const router = useRouter();
 
-    const signup = async (email) => {
+    const signup = async (email, recaptchaValue) => {
         setError(null)
         setIsLoading(true)
 
@@ -18,7 +18,7 @@ const useSignUp = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({email})
+            body: JSON.stringify({email, recaptchaValue})
         })
         const json = await response.json()
 
