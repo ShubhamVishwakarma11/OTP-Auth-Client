@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import useInputState from '@/hooks/useInputState';
 import useSignUp from '@/hooks/useSignUp';
 import {ImSpinner2} from 'react-icons/im';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const SignUpForm = () => {
     const {signup, error, isLoading} = useSignUp();
+    const [recaptchaValue, setRecaptchaValue] = useState();
     const [email, resetEmail, handleEmail] = useInputState("");
+
+    const captchaRef = useRef();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(email);
+        console.log(email, recaptchaValue);
         await signup(email);
         resetEmail();
+        captchaRef.current.reset();
+    }
+
+    const handleChange = (value) => {
+        setRecaptchaValue(value);
     }
     
   return (
@@ -31,6 +40,13 @@ const SignUpForm = () => {
                 placeholder="Enter your email"
             />
         </div>
+        
+        <ReCAPTCHA
+            onChange={handleChange}
+            sitekey={process.env.NEXT_PUBLIC_SITE_KEY}
+            ref={captchaRef}
+        />
+
         <button type='submit' disabled={isLoading} className='bg-green-500 p-4 rounded-lg hover:bg-green-600 transition-none'>
         {isLoading? 
                 <div className='flex items-center justify-center gap-2'>

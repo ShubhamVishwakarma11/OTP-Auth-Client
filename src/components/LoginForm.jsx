@@ -14,9 +14,9 @@ const LoginForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(email, recaptchaValue);
-        captchaRef.current.reset();
         await login(email, recaptchaValue);
         resetEmail();
+        captchaRef.current.reset();
     }
 
     const handleChange = (value) => {
